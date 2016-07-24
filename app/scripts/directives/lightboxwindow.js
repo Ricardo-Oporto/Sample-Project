@@ -14,7 +14,7 @@ angular.module('frontEndTestApp')
 
               var modalDialog = element.find(".modal-content");
 
-              $timeout(positionModal, 0);
+              $timeout(positionModal, 10);
 
 
               function positionModal() {
