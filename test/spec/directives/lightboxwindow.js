@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Directive: myDirective', function () {
+describe('Directive: lightboxWindow', function () {
 
   // load the directive's module
   beforeEach(module('frontEndTestApp'));
@@ -13,8 +13,8 @@ describe('Directive: myDirective', function () {
   }));
 
   it('should make hidden element visible', inject(function ($compile) {
-    element = angular.element('<my-directive></my-directive>');
+    element = angular.element('<div class="lightbox-window"></div>');
     element = $compile(element)(scope);
-    expect(element.text()).toBe('this is the myDirective directive');
+   // expect(element.text()).toBe('this is the lightboxContent directive');
   }));
 });
