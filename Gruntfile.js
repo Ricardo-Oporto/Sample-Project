@@ -456,11 +456,6 @@ module.exports = function (grunt) {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
-    },
-      
-    // SASS linter for CSS code quality 
-    sasslint: {
-        target: ['app/styles/\*.scss']
     }
   });
 
@@ -519,5 +514,4 @@ module.exports = function (grunt) {
     'build'
   ]);
 
-  grunt.loadNpmTasks('grunt-sass-lint');
 };
