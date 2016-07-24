@@ -1,0 +1,14 @@
+﻿
+.progressbar {
+    text-align: center;
+
+    .progress {
+        border-radius: 0px;
+    }
+}
+
+.progressbar_icon {
+    color: $brand-success;
+    font-size: 2em;
+    vertical-align: text-bottom;
+}

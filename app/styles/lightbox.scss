@@ -1,0 +1,25 @@
+﻿.lightbox_button{
+   float:right;
+   border-radius:50%;
+   border-style:none;
+   color:#777777;
+}
+
+.lightbox_header{
+    background-color: #808080;
+    border-bottom:0px;
+    color:#DDDDDD;
+    h4{
+        display:inline;
+    }
+}
+
+.lightbox_container{
+    box-shadow:none;
+    border-radius:0px;
+}
+
+.lightbox_content{
+   padding-left:20%;
+   padding-right:20%;
+}

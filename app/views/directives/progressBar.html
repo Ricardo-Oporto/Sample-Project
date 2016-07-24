@@ -1,1 +1,6 @@
-﻿<uib-progressbar class="progress-striped" value="modal.progress" type="warning">{{modal.progress}}%</uib-progressbar>
+﻿<div class="progressbar">
+    <uib-progressbar class="progress" value="progress" animate="false" type="{{ complete ? 'success':'info'}}"></uib-progressbar>
+    <span ng-hide="complete">Progress {{progress}}%</span>
+    <span ng-show="complete">This task is {{progress}}% completed <i class="glyphicon glyphicon-ok progressbar_icon"></i></span>
+</div>
+

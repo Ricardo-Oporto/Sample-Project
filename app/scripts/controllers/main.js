@@ -8,21 +8,27 @@
  * Controller of the frontEndTestApp
  */
 angular.module('frontEndTestApp')
-  .controller('MainCtrl', function ($uibModal) {
-
+  .controller('MainCtrl', function ($uibModal, dataService) {
 
       var ctrl = this;
+
+      dataService.getLightBoxData('data/data.json').then(function (response) {
+
+          ctrl.lightBoxConfig = response.data;
+          ctrl.showModal();
+      });
 
       ctrl.showModal = function showModal() {
 
           var modalInstance = $uibModal.open({
               animation: true,
-              template: '<light-box></light-box>',
-              controller: 'LightboxCtrl as modal',
-
+              templateUrl: 'views/directives/lightBox.html',
+              controller: 'LightboxCtrl as lightBox',
+              windowTemplateUrl: 'views/directives/lightboxWindow.html',
+              backdrop:'static',
               resolve: {
-                  items: function () {
-                      return '';
+                  options: function () {
+                    return ctrl.lightBoxConfig;
                   }
               }
           });
@@ -30,14 +36,4 @@ angular.module('frontEndTestApp')
 
       };
 
-
-      ctrl.showModal();
-
-
-
-      this.awesomeThings = [
-        'HTML5 Boilerplate',
-        'AngularJS',
-        'Karma'
-      ];
   });

@@ -13,6 +13,8 @@ angular.module('frontEndTestApp')
 
       var _getLightBoxData = function getLightBoxData(url) {
 
+          return $http.get(url);
+
 
       };
 

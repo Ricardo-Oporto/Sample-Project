@@ -1,17 +1,13 @@
-﻿<div class="modal-content">
-    <div class="modal-header">
-        <h3 class="modal-title">I'm a modal!</h3>
+﻿<div class="lightbox">
+    <div class="modal-header lightbox_header">
+        <h4>Progress</h4>
+      <button class="lightbox_button" ng-click="lightBox.close()">X</button>
     </div>
-    <div class="modal-body">
+    <div class="modal-body lightbox_content">
         <div class="row">
             <div class="col-sm-12">
-                <progress-bar></progress-bar>
-         
+                <progress-bar start="lightBox.progressbarConfig.start" finish="lightBox.progressbarConfig.finish" duration="lightBox.progressbarConfig.duration"></progress-bar>
             </div>
         </div>
-    </div>
-    <div class="modal-footer">
-        <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
     </div>
 </div>

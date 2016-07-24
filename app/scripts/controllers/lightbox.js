@@ -8,20 +8,16 @@
  * Controller of the frontEndTestApp
  */
 angular.module('frontEndTestApp')
-  .controller('LightboxCtrl', function ($interval) {
+  .controller('LightboxCtrl', function (options, $uibModalInstance) {
+
       var lightBox = this;
-      lightBox.progress = 0;
+      lightBox.progressbarConfig = options.data.lightbox
 
+      lightBox.close = function close() {
 
+      $uibModalInstance.close();
 
-      $interval(function () {
-          if (lightBox.progress !== 100) {
-              lightBox.progress = lightBox.progress + 20;
-          }
-
-      }, 2, 20);
-
+      };
 
   
-
   });
