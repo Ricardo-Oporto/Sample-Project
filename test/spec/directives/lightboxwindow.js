@@ -6,15 +6,22 @@ describe('Directive: lightboxWindow', function () {
   beforeEach(module('frontEndTestApp'));
 
   var element,
-    scope;
+    scope, template, timeout;
 
-  beforeEach(inject(function ($rootScope) {
+  beforeEach(module('templates'));
+
+
+
+  beforeEach(inject(function ($rootScope, $templateCache, $compile) {
     scope = $rootScope.$new();
+
+     element = $compile('<div class="lightbox-window"></div>')(scope);
+
   }));
 
-  it('should make hidden element visible', inject(function ($compile) {
-    element = angular.element('<div class="lightbox-window"></div>');
-    element = $compile(element)(scope);
+  it('should make hidden element visible', inject(function ($timeout) {
+
+     $timeout.flush();
    // expect(element.text()).toBe('this is the lightboxContent directive');
   }));
 });

@@ -6,18 +6,62 @@ describe('Controller: MainCtrl', function () {
   beforeEach(module('frontEndTestApp'));
 
   var MainCtrl,
-    scope;
+    scope,
+      modal = {
+         open:function(){}
+      },
+      dataService = {
+         getLightBoxData: function(){
+            return ''
+         }
+      };
+
+
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function ($controller, $rootScope, $q) {
     scope = $rootScope.$new();
+
+     spyOn(dataService, 'getLightBoxData').and.callFake(function() {
+        var deferred = $q.defer();
+        deferred.resolve('Remote call result');
+        return deferred.promise;
+     });
+
+
+
     MainCtrl = $controller('MainCtrl', {
-      $scope: scope
-      // place here mocked dependencies
+      $scope: scope,
+       $uibModal:modal,
+       dataService:dataService
     });
+
+     spyOn(modal, 'open');
+     spyOn(MainCtrl, 'showModal');
+
+     describe("initialisation", function() {
+
+        it('should open the modal', function () {
+           scope.$digest();
+           expect(dataService.getLightBoxData).toHaveBeenCalled();
+           expect(MainCtrl.showModal).toHaveBeenCalled();
+        });
+
+     });
+
+     describe("controller functions", function() {
+
+        it('should open the modal when showModal is called', function () {
+
+           MainCtrl.showModal();
+           expect(modal.open).toHaveBeenCalled();
+        });
+
+
+     });
+
+
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-   // expect(MainCtrl.awesomeThings.length).toBe(3);
-  });
+
 });

@@ -20,7 +20,7 @@ angular.module('frontEndTestApp')
 
       ctrl.showModal = function showModal() {
 
-          var modalInstance = $uibModal.open({
+         $uibModal.open({
               animation: true,
               templateUrl: 'views/directives/lightBox.html',
               controller: 'LightboxCtrl as lightBox',

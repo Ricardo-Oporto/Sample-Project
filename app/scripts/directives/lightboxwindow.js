@@ -7,26 +7,32 @@
  * # lightboxContent
  */
 angular.module('frontEndTestApp')
-  .directive('lightboxWindow', function ($timeout, $window) {
-      return {
+    .directive('lightboxWindow', function ($timeout, $window) {
+       return {
           restrict: 'C',
-          link: function postLink(scope, element, attrs) {
+          link: function postLink(scope, element) {
 
-              var modalDialog = element.find(".modal-content");
+             var modal = element.find('.modal-content');
 
-              $timeout(positionModal, 0);
+             scope.verticalAlignElement = function verticalAlignElement(element) {
 
+                var size = scope.getTopMargin(element);
 
-              function positionModal() {
+                element.css('margin-top', size);
 
-                  modalDialog.css("margin-top", Math.max(0, ($window.innerHeight - modalDialog.height()) / 2));
+             };
 
-              }
+             scope.getTopMargin = function getTopMargin(element) {
 
+                return Math.max(0, ($window.innerHeight - element.height()) / 2);
 
-              angular.element($window).bind('resize', function () {
-                  positionModal();
-              });
+             };
+
+             $timeout(scope.verticalAlignElement(modal), 0);
+
+             angular.element($window).bind('resize', function () {
+                scope.verticalAlignElement();
+             });
           }
-      };
-  });
+       };
+    });

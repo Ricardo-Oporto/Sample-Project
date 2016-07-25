@@ -10,10 +10,6 @@ angular.module('frontEndTestApp')
   .directive('lightBox', function () {
     return {
       templateUrl: 'views/directives/lightBox.html',
-      restrict: 'E',
-      link: function postLink(scope, element, attrs) {
-
-
-      }
+      restrict: 'E'
     };
   });
