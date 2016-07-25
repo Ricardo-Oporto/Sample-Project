@@ -6,7 +6,10 @@ describe('Controller: LightboxCtrl', function () {
   beforeEach(module('frontEndTestApp'));
 
   var LightboxCtrl,
-    scope, 
+    scope,
+    modal = {
+       close:function(){}
+    },
     options = { 
         data: {
             lightbox: {
@@ -22,12 +25,21 @@ describe('Controller: LightboxCtrl', function () {
     scope = $rootScope.$new();
     LightboxCtrl = $controller('LightboxCtrl', {
         $scope: scope,
-        options: options,
-        $uibModalInstance: {}
+        options:  options,
+        $uibModalInstance: modal
     });
+
+     spyOn(modal, 'close');
+
+
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-   // expect(LightboxCtrl.awesomeThings.length).toBe(3);
+  it('expect the options be assigned to the controller', function () {
+     expect(LightboxCtrl.progressbarConfig).toEqual(options.data.lightbox);
   });
+
+   it('expect the modal instance\'s close function to be called when the close function is called on the controller', function () {
+      LightboxCtrl.close();
+     expect(modal.close).toHaveBeenCalled();
+   });
 });

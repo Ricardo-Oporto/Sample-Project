@@ -11,7 +11,7 @@ angular.module('frontEndTestApp')
   .controller('LightboxCtrl', function (options, $uibModalInstance) {
 
       var lightBox = this;
-      lightBox.progressbarConfig = options.data.lightbox
+      lightBox.progressbarConfig = options.data.lightbox;
 
       lightBox.close = function close() {
 

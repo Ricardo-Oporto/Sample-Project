@@ -16,7 +16,7 @@ angular.module('frontEndTestApp')
               finish: '=',
               duration: '='
           },
-          link: function postLink(scope, element, attrs) {
+          link: function postLink(scope, element) {
 
               var stop, cancel;
 
