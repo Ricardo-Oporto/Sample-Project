@@ -5,10 +5,18 @@
     .progress {
         border-radius: 0px;
     }
+.visible {
+
+    visibility: visible;
+}
+
 }
 
 .progressbar_icon {
     color:#5cb85c;
     font-size: 2em;
     vertical-align: text-bottom;
+    visibility: hidden;
 }
+
+
