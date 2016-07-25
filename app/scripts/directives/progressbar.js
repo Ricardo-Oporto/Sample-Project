@@ -26,7 +26,7 @@ angular.module('frontEndTestApp')
 
               scope.intervals = scope.duration / scope.finish;
 
-              function completeProgressBar() {
+             scope.completeProgressBar = function completeProgressBar() {
 
                   scope.progress = scope.finish;
                   $interval.cancel(stop);
@@ -34,17 +34,17 @@ angular.module('frontEndTestApp')
                
               }
 
-              function updateProgressBar() {
+              scope.updatePorgressBar = function updateProgressBar() {
 
                   if (scope.progress !== scope.finish) {
                       scope.progress = scope.progress + 1;
-                  }
+                  } 
 
               }
 
-              stop = $interval(updateProgressBar, scope.intervals);
+              stop = $interval(scope.updatePorgressBar, scope.intervals);
 
-              cancel = $timeout(completeProgressBar, scope.duration);
+              cancel = $timeout(scope.completeProgressBar, scope.duration);
 
               element.on('$destroy', function () {
                   $interval.cancel(stop);
