@@ -74,23 +74,5 @@ describe('Directive: progressBar', function () {
 
   }));
 
-  it('should set the progress to finish value and complete to true', inject(function ($compile, $timeout) {
-      scope.start = 0;
-      scope.finish = 100;
-      scope.duration = 3000;
-
-      element = angular.element('<progress-bar start="start" finish="finish" duration="duration"></progress-bar>');
-      element = $compile(element)(scope);
-      scope.$digest();
-      var isolatedScope = element.isolateScope();
-      spyOn(isolatedScope, 'completeProgressBar');
-      time.flush();
-      expect(isolatedScope.completeProgressBar).toHaveBeenCalled();
-
-  }));
-
-
-
-
   
 });
